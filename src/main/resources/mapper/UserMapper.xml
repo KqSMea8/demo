@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hexin.mapper.UserMapper">
+
+
+    <select id="findAll" resultType="com.hexin.entity.User">
+		SELECT * FROM USER
+	</select>
+
+	<insert id="insertUser" parameterType="com.hexin.entity.User">
+		INSERT INTO USER (username,password,sex,nick_name,state)VALUES (#{username},#{password},#{sex},#{nick_name},#{state})
+	</insert>
+
+    <select id="findUserById" resultType="com.hexin.entity.User">
+		SELECT * FROM USER WHERE id = #{id}
+	</select>
+
+    <delete id="delUserById" parameterType="Integer">
+		DELETE from USER WHERE id = #{id}
+	</delete>
+
+    <update id="updateUserById" parameterType="com.hexin.entity.User">
+		update USER set username=#{username} where id=#{id}
+	</update>
+
+    <select id="login" parameterType="com.hexin.entity.User" resultType="com.hexin.entity.User">
+		SELECT * FROM user WHERE username=#{username}
+	</select>
+
+    <select id="viewTest" resultType="com.hexin.entity.User">
+		SELECT * FROM USER
+	</select>
+</mapper>
