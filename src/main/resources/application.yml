@@ -19,7 +19,7 @@ server:
 
 
 redis:
-  ip: 172.20.8.26
+  ip: 127.0.0.1
   port: 6379
   pool:
     maxActive: 1024
