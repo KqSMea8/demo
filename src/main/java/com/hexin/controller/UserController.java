@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import redis.clients.jedis.Jedis;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -23,6 +24,15 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    public static void main(String[] args) {
+
+        Jedis jedis = new Jedis();
+        //jedis.set("keys", "111");
+        jedis.del("keys");
+        System.out.println(jedis.get("keys"));
+
+    }
 
     //全表查询
     @RequestMapping("userList")
@@ -54,7 +64,7 @@ public class UserController {
             user.setPassword("232323");
             user.setSex(2);
             user.setNick_name("zhangerhe");
-            user.setState("1");
+            user.setStatus("1");
             Integer id = userService.insertUser(user);
         }
         return null;
@@ -92,21 +102,6 @@ public class UserController {
     public String viewTest(Model model) {
         model.addAttribute("userList", userService.viewTest());
         return "userList";
-    }
-
-    public static void main(String[] args) {
-        String strDate = new SimpleDateFormat("").format(new Date(System.currentTimeMillis()));
-        List<String> wordList = Arrays.asList("regular", "aaaaaaaa", "cccccccccc", "as", "a", "string", "must");
-        long countNumber = wordList.stream().filter(w -> w.length() > 7).count();
-        System.out.println(countNumber);
-        int countByIterator = 0;
-        for (String word : wordList) {
-            if (word.length() > 7) {
-                countByIterator++;
-            }
-        }
-
-        long countByStream = wordList.stream().filter(w -> w.length() > 7).count();
     }
 
     /**

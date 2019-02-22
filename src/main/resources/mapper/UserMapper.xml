@@ -8,7 +8,7 @@
 	</select>
 
 	<insert id="insertUser" parameterType="com.hexin.entity.User">
-		INSERT INTO USER (username,password,sex,nick_name,state)VALUES (#{username},#{password},#{sex},#{nick_name},#{state})
+		INSERT INTO USER (username,password,sex,nick_name,status)VALUES (#{username},#{password},#{sex},#{nick_name},#{status})
 	</insert>
 
     <select id="findUserById" resultType="com.hexin.entity.User">
