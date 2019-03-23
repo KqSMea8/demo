@@ -11,7 +11,7 @@ public interface UserMapper {
 
     Integer insertUser(User user);
 
-    List<User> findUserById(Integer id);
+    User findUserById(Integer id);
 
     Integer delUserById(Integer id);
 
