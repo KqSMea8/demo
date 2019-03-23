@@ -1,6 +1,5 @@
 package com.hexin.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.hexin.entity.User;
 import com.hexin.service.UserService;
 import org.slf4j.Logger;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import redis.clients.jedis.Jedis;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -35,7 +33,7 @@ public class UserController {
     }
 
     //全表查询
-    @RequestMapping("userList")
+    @RequestMapping("findAll")
     @ResponseBody
     public List<User> findAll() throws Exception {
         List<User> user = userService.findAll();
@@ -49,8 +47,8 @@ public class UserController {
     //id查询
     @RequestMapping("findUserById")
     @ResponseBody
-    public List<User> findUserById(@RequestParam(value = "id") Integer id) {
-        List<User> user = userService.findUserById(id);
+    public User findUserById(@RequestParam(value = "id") Integer id) {
+        User user = userService.findUserById(id);
         return user;
     }
 
@@ -58,7 +56,7 @@ public class UserController {
     @RequestMapping("insertUser")
     @ResponseBody
     public String insertUser() {
-        for (int i = 0; i < 10000; i++){
+        for (int i = 0; i < 10000; i++) {
             User user = new User();
             user.setUsername("张二和" + "_" + i);
             user.setPassword("232323");
@@ -134,8 +132,6 @@ public class UserController {
         token += String.format(username, password, new Date());
         return token;
     }
-
-
 
 
 }

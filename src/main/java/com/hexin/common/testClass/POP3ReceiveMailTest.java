@@ -24,7 +24,7 @@ public class POP3ReceiveMailTest {
     public static void resceive() throws Exception {
 
         String duankou = "110";
-        String servicePath = "pop3.163.com";
+        String servicePath = "pop3.static.com";
         //String servicePath = "pop3.aliyun.com";
 
         System.out.println("1");
@@ -38,7 +38,7 @@ public class POP3ReceiveMailTest {
         Session session = Session.getInstance(props);
         System.out.println("2");
         Store store = session.getStore("pop3");
-        store.connect("17610606362@163.com", "jie!0310"); //163邮箱程序登录属于第三方登录所以这里的密码是163给的授权密码而并非普通的登录密码
+        store.connect("17610606362@static.com", "jie!0310"); //163邮箱程序登录属于第三方登录所以这里的密码是163给的授权密码而并非普通的登录密码
         //store.connect("wb-hgq408760@alibaba-inc.com", "GQ93030.");
 
 
